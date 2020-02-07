@@ -2,24 +2,12 @@
   <div class="container">
     <div>
       <logo />
-      <h1 class="title">
-        album-art-quiz-nuxt
+      <h1>
+        {{ title }}
       </h1>
-      <h2 class="subtitle">
+      <p>
         Spotify album art quiz using Nuxtjs
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+      </p>
     </div>
   </div>
 </template>
@@ -30,11 +18,17 @@ import Logo from '~/components/Logo.vue'
 export default {
   components: {
     Logo
+  },
+  asyncData (ctx) {
+    console.log('isServer', !!ctx.req)
+    return {
+      title: 'Album Art Quiz'
+    }
   }
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 .container {
   margin: 0 auto;
   min-height: 100vh;
@@ -44,25 +38,20 @@ export default {
   text-align: center;
 }
 
-.title {
+h1 {
   font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   display: block;
   font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
+  font-size: 40px;
+  color: $color-grey;
   letter-spacing: 1px;
 }
 
-.subtitle {
+p {
   font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+  font-size: 16px;
+  color: $color-green;
+  padding: 15px;
 }
 </style>

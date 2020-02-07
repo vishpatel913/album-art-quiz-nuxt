@@ -19,20 +19,13 @@ export default {
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '#fff' },
-  /*
-   ** Global CSS
-   */
-  css: [],
-  /*
-   ** Plugins to load before mounting the App
-   */
-  plugins: [],
+  loading: { color: '#1DB954' },
+  css: ['@/assets/scss/_variables.scss'],
+  plugins: [{ src: '~/plugins/spotify', mode: 'client' }],
   /*
    ** Nuxt.js dev-modules
    */
   buildModules: [
-    // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
     // Doc: https://github.com/nuxt-community/stylelint-module
     '@nuxtjs/stylelint-module'
@@ -45,20 +38,20 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    '@nuxtjs/style-resources'
   ],
-  /*
-   ** Axios module configuration
-   ** See https://axios.nuxtjs.org/options
-   */
+  styleResources: {
+    scss: ['@/assets/scss/_variables.scss']
+  },
+  env: {
+    SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID,
+    SPOTIFY_CLIENT_SECRET: process.env.SPOTIFY_CLIENT_SECRET,
+    CLIENT_URL: process.env.CLIENT_URL
+  },
   axios: {},
-  /*
-   ** Build configuration
-   */
+  serverMiddleware: [],
   build: {
-    /*
-     ** You can extend webpack config here
-     */
-    extend(config, ctx) {}
+    extend (config, ctx) {}
   }
 }
