@@ -20,7 +20,6 @@ export default {
     Logo
   },
   asyncData (ctx) {
-    console.log('isServer', !!ctx.req)
     return {
       title: 'Album Art Quiz'
     }

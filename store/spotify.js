@@ -1,7 +1,7 @@
 import { getUrlParams } from '../utils'
 
 export const state = () => ({
-  auth: {},
+  auth: null,
   artists: []
 })
 
@@ -9,16 +9,16 @@ export const getters = {}
 export const mutations = {
   setAuth (state, res) {
     state.auth = res
-    // console.log('AUTH RES:', res)
   }
 }
 
 export const actions = {
-  authenticate ({ commit }) {
-    const params = getUrlParams(window.location.href)
-    if (params.code) {
-      // TODO: authenticate and save token to state
-      // https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow
+  async authenticate ({ commit, state }) {
+    // const { auth } = state
+    const { code } = getUrlParams(window.location.href)
+    if (code) {
+      const tokenData = await this.$spotify.getToken(code)
+      commit('setAuth', tokenData)
       return
     }
     const authUrl = new URL('https://accounts.spotify.com/authorize')
@@ -27,7 +27,7 @@ export const actions = {
       response_type: 'code',
       redirect_uri: process.env.CLIENT_URL,
       state: '123123123',
-      scope: 'user-top-read'
+      scope: 'user-top-read user-read-private user-read-email'
     }
     authUrl.search = new URLSearchParams(authParams).toString()
     window.location = authUrl

@@ -1,6 +1,6 @@
-// import createSpotify from '~/api/spotify'
+import spotifyApi from '~/api/spotify'
 
 export default (ctx, inject) => {
-  console.log('isServer', !!ctx && !!ctx.req)
+  inject('spotify', spotifyApi(ctx.$axios))
   ctx.store.dispatch('spotify/authenticate')
 }
