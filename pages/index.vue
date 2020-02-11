@@ -1,27 +1,50 @@
 <template>
   <div class="container">
-    <div>
-      <logo />
-      <h1>
-        {{ title }}
-      </h1>
+    <h1>Album Art Quiz</h1>
+    <div v-if="isAuthed" class="user-container">
+      <img :src="user.imageSrc" alt="Photo of you" />
+      <h2>Hey there {{ user.name }}</h2>
+    </div>
+    <div v-else class="login-container">
+      <h2>Login in with Spotify</h2>
       <p>
-        Spotify album art quiz using Nuxtjs
+        <button @click="login" type="button" name="login">
+          Login
+        </button>
       </p>
     </div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import { mapGetters } from 'vuex'
 
 export default {
-  components: {
-    Logo
+  computed: {
+    ...mapGetters({
+      user: 'userDetails',
+      isAuthed: 'isAuthed'
+    })
   },
-  asyncData (ctx) {
-    return {
-      title: 'Album Art Quiz'
+  async fetch ({ store, query }) {
+    const { code } = query
+    if (code && !store.getters.tokenValid) {
+      await store.dispatch('authenticate', code)
+      await store.dispatch('retrieveUser')
+    }
+  },
+  methods: {
+    login () {
+      const authUrl = new URL('https://accounts.spotify.com/authorize')
+      const authParams = {
+        client_id: process.env.SPOTIFY_CLIENT_ID,
+        response_type: 'code',
+        redirect_uri: process.env.CLIENT_URL,
+        state: '123123123',
+        scope: 'user-top-read user-read-private user-read-email'
+      }
+      authUrl.search = new URLSearchParams(authParams).toString()
+      window.location = authUrl
     }
   }
 }
@@ -32,25 +55,9 @@ export default {
   margin: 0 auto;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-}
-
-h1 {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 40px;
-  color: $color-grey;
-  letter-spacing: 1px;
-}
-
-p {
-  font-weight: 300;
-  font-size: 16px;
-  color: $color-green;
-  padding: 15px;
 }
 </style>

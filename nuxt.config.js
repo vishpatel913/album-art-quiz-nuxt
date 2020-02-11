@@ -1,8 +1,5 @@
 export default {
   mode: 'universal',
-  /*
-   ** Headers of the page
-   */
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -16,28 +13,13 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
-  /*
-   ** Customize the progress-bar color
-   */
   loading: { color: '#1DB954' },
   css: ['@/assets/scss/_variables.scss'],
-  plugins: [{ src: '~/plugins/spotify', mode: 'client' }],
-  /*
-   ** Nuxt.js dev-modules
-   */
-  buildModules: [
-    '@nuxtjs/eslint-module',
-    // Doc: https://github.com/nuxt-community/stylelint-module
-    '@nuxtjs/stylelint-module'
-  ],
-  /*
-   ** Nuxt.js modules
-   */
+  plugins: ['~/plugins/spotify'],
+  buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/stylelint-module'],
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
     '@nuxtjs/style-resources'
   ],

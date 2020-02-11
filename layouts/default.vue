@@ -17,6 +17,34 @@ html {
   box-sizing: border-box;
 }
 
+h1 {
+  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  display: block;
+  font-weight: 300;
+  font-size: 40px;
+  color: $color-grey;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  display: block;
+  font-weight: 300;
+  font-size: 30px;
+  color: $color-grey;
+  letter-spacing: 1px;
+}
+
+p {
+  font-weight: 300;
+  font-size: 16px;
+  color: $color-green;
+  padding: 15px;
+}
+
 *,
 *:before,
 *:after {

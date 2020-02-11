@@ -1,7 +1,8 @@
 const qs = require('querystring')
 const SPOTIFY_API_URL = 'https://api.spotify.com/v1'
+
 export default $axios => ({
-  async getToken (code) {
+  async token (code) {
     const requestBody = {
       grant_type: 'authorization_code',
       code,
@@ -24,7 +25,8 @@ export default $axios => ({
     )
     return result
   },
-  async getUserDetails (token) {
+
+  async userDetails (token) {
     const result = await $axios.$get(`${SPOTIFY_API_URL}/me`, {
       headers: {
         Authorization: `Bearer ${token}`
@@ -32,5 +34,6 @@ export default $axios => ({
     })
     return result
   },
-  async getArtists () {}
+
+  async artists () {}
 })
