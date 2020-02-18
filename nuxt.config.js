@@ -15,7 +15,7 @@ export default {
   },
   loading: { color: '#1DB954' },
   css: ['@/assets/scss/_variables.scss'],
-  plugins: ['~/plugins/spotify'],
+  plugins: ['~/plugins/places'],
   buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/stylelint-module'],
   modules: [
     '@nuxtjs/axios',
@@ -34,6 +34,6 @@ export default {
   axios: {},
   serverMiddleware: [],
   build: {
-    extend (config, ctx) {}
+    extend(config, ctx) {}
   }
 }

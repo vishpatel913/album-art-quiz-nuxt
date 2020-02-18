@@ -1,10 +1,10 @@
-# album-art-quiz-nuxt
+# pub-finder-nuxt
 
-> Spotify album art quiz using Nuxtjs
+> Pub finder app using Nuxtjs
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 $ yarn install
 
