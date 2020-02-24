@@ -27,9 +27,7 @@ export default {
     scss: ['@/assets/scss/_variables.scss']
   },
   env: {
-    SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID,
-    SPOTIFY_CLIENT_SECRET: process.env.SPOTIFY_CLIENT_SECRET,
-    CLIENT_URL: process.env.CLIENT_URL
+    GOOGLE_API_KEY: process.env.GOOGLE_API_KEY,
   },
   axios: {},
   serverMiddleware: [],
