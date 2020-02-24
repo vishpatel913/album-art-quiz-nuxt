@@ -1,11 +1,16 @@
 <template>
   <div class="container">
     <h1>Pub Finder</h1>
+    <!-- <h2>{{ nearestPub.name }}</h2> -->
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  fetch (ctx) {
+    ctx.store.dispatch('getNearbyPubs')
+  }
+}
 </script>
 
 <style lang="scss" scoped>

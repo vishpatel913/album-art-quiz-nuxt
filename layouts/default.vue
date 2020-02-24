@@ -23,7 +23,7 @@ h1 {
   display: block;
   font-weight: 300;
   font-size: 40px;
-  color: $color-grey;
+  color: $color-primary;
   letter-spacing: 1px;
   margin-bottom: 1rem;
 }
@@ -34,14 +34,14 @@ h2 {
   display: block;
   font-weight: 300;
   font-size: 30px;
-  color: $color-grey;
+  color: $color-secondary;
   letter-spacing: 1px;
 }
 
 p {
   font-weight: 300;
   font-size: 16px;
-  color: $color-green;
+  color: $color-primary;
   padding: 15px;
 }
 

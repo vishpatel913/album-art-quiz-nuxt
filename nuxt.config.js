@@ -15,7 +15,7 @@ export default {
   },
   loading: { color: '#1DB954' },
   css: ['@/assets/scss/_variables.scss'],
-  plugins: ['~/plugins/places'],
+  plugins: ['~/plugins/googleMaps'],
   buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/stylelint-module'],
   modules: [
     '@nuxtjs/axios',
@@ -27,11 +27,13 @@ export default {
     scss: ['@/assets/scss/_variables.scss']
   },
   env: {
-    GOOGLE_API_KEY: process.env.GOOGLE_API_KEY,
+    GOOGLE_API_KEY: process.env.GOOGLE_API_KEY
   },
-  axios: {},
+  axios: {
+    baseURL: 'https://maps.googleapis.com/maps/api'
+  },
   serverMiddleware: [],
   build: {
-    extend(config, ctx) {}
+    extend (config, ctx) {}
   }
 }

@@ -1,20 +1,25 @@
 export const state = () => ({
-  // auth: null
+  location: {
+    lat: 51.46323,
+    long: -0.15943
+  },
+  results: []
 })
 
 export const getters = {
-  // isAuthed: (state) => !!state.auth && !!state.user
+  getLocation: state => state.location
 }
 
 export const mutations = {
-  // setAuth(state, data) {
-  //   state.auth = { ...data, timestamp: moment().format() }
-  // }
+  SET_RESULTS (state, data) {
+    state.results = data
+  }
 }
 
 export const actions = {
-  // async authenticate({ commit }, code) {
-  //   const tokenData = await this.$spotify.token(code)
-  //   commit('setAuth', tokenData)
-  // }
+  async getNearbyPubs ({ getters, commit }) {
+    const { getLocation } = getters
+    const response = await this.$places.getNearbyPubs(getLocation)
+    commit('SET_RESULTS', response)
+  }
 }
