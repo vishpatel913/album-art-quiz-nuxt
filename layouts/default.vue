@@ -15,27 +15,29 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  padding: 0 1rem;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  display: block;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
 }
 
 h1 {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
   font-size: 40px;
   color: $color-primary;
-  letter-spacing: 1px;
-  margin-bottom: 1rem;
 }
 
 h2 {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
   font-size: 30px;
   color: $color-secondary;
-  letter-spacing: 1px;
 }
 
 p {
@@ -43,6 +45,7 @@ p {
   font-size: 16px;
   color: $color-primary;
   padding: 15px;
+  margin-bottom: 0.25rem;
 }
 
 *,

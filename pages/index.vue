@@ -1,14 +1,23 @@
 <template>
   <div class="container">
     <h1>Pub Finder</h1>
-    <!-- <h2>{{ nearestPub.name }}</h2> -->
+    <h2>lat: {{ getLocation.lat }}</h2>
+    <h2>long: {{ getLocation.lng }}</h2>
+    <h3>Nearest Pubs: {{ getResults.map(item => item.name) }}</h3>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  fetch (ctx) {
-    ctx.store.dispatch('getNearbyPubs')
+  async fetch (ctx) {
+    await ctx.store.dispatch('getGeolocation')
+    await ctx.store.dispatch('getNearbyPubs')
+  },
+  computed: {
+    ...mapGetters(['getLocation', 'getResults']),
+    nearestPubs: () => {}
   }
 }
 </script>
