@@ -46,14 +46,14 @@ commands:
       - checkout
       - restore_cache:
           keys:
-            # Find a cache corresponding to this specific package-lock.json
-            - v1-dependencies-{{ checksum "package-lock.json" }}
+            # Find a cache corresponding to this specific yarn.lock
+            - v1-dependencies-{{ checksum "yarn.lock" }}
             # Fallback cache to be used
             - v1-dependencies-
       - run:
           name: Install Dependencies
           command: yarn
       - save_cache:
-          key: v1-dependencies-{{ checksum "package-lock.json" }}
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
           paths:
             - ./node_modules
