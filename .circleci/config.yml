@@ -54,11 +54,11 @@ jobs:
       - checkout
       - heroku/install
       - run:
-        name: Add env variables for Nuxt config
-        command: |
-          heroku config:set NPM_CONFIG_PRODUCTION=false
-          heroku config:set HOST=0.0.0.0
-          heroku config:set NODE_ENV=production
+          name: Add env variables for Nuxt config
+          command: |
+            heroku config:set NPM_CONFIG_PRODUCTION=false
+            heroku config:set HOST=0.0.0.0
+            heroku config:set NODE_ENV=production
       - heroku/deploy-via-git
 
 commands:
