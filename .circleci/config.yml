@@ -5,14 +5,6 @@ orbs:
 workflows:
   heroku_deploy:
     jobs:
-      # - test:
-      #   filters:
-      #     branches:
-      #       only: master
-      # - lint:
-      #   filters:
-      #     branches:
-      #       only: master
       - build:
           filters:
             branches:
@@ -20,31 +12,17 @@ workflows:
       - deploy:
           requires:
             - build
-            # - test
-            # - lint
           filters:
             branches:
               only: master
 
 jobs:
-  test:
-    docker:
-      - image: circleci/node:10
-    steps:
-      - run:
-          name: Test app
-          command: yarn test
-  lint:
-    docker:
-      - image: circleci/node:10
-    steps:
-      - run:
-          name: Lint app
-          command: yarn lint
   build:
+    working_directory: ~/pub-finder-nuxt
     docker:
       - image: circleci/node:10
     steps:
+      - install_dependencies
       - run:
           name: Build app
           command: yarn build
