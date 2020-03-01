@@ -1,5 +1,6 @@
 export default {
   mode: 'universal',
+  srcDir: 'src/',
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -26,14 +27,29 @@ export default {
   styleResources: {
     scss: ['@/assets/scss/_variables.scss']
   },
-  env: {
-    GOOGLE_API_KEY: process.env.GOOGLE_API_KEY
+  dotenv: {
+    path: './'
   },
   axios: {
-    baseURL: 'https://maps.googleapis.com/maps/api'
+    baseURL: 'https://maps.googleapis.com/maps/api',
+    credentials: false,
+    proxyHeaders: false
   },
   serverMiddleware: [],
   build: {
     extend (config, ctx) {}
+  },
+  babel: {
+    presets ({ isServer }) {
+      return [
+        [
+          require.resolve('@nuxt/babel-preset-app'),
+          {
+            buildTarget: isServer ? 'server' : 'client',
+            corejs: { version: 3 }
+          }
+        ]
+      ]
+    }
   }
 }
