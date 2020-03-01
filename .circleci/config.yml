@@ -1,0 +1,80 @@
+version: 2.1
+orbs:
+  heroku: circleci/heroku@1.0.1
+
+commands:
+  install_dependencies:
+    description: 'Install dependencies'
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            # Find a cache corresponding to this specific package-lock.json
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+            # Fallback cache to be used
+            - v1-dependencies-
+      - run:
+          name: Install Dependencies
+          command: yarn
+      - save_cache:
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
+jobs:
+  test:
+    docker:
+      - image: circleci/node:10
+    steps:
+      - run:
+          name: Test app
+          command: yarn test
+  lint:
+    docker:
+      - image: circleci/node:10
+    steps:
+      - run:
+          name: Lint app
+          command: yarn lint
+  build:
+    docker:
+      - image: circleci/node:10
+    steps:
+      - run:
+          name: Build app
+          command: yarn build
+  deploy:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/install
+      - run:
+        name: Add env variables for Nuxt config
+        command: |
+          heroku config:set NPM_CONFIG_PRODUCTION=false
+          heroku config:set HOST=0.0.0.0
+          heroku config:set NODE_ENV=production
+      - heroku/deploy-via-git
+
+workflows:
+  heroku_deploy:
+    jobs:
+      # - test:
+      #   filters:
+      #     branches:
+      #       only: master
+      # - lint:
+      #   filters:
+      #     branches:
+      #       only: master
+      - build:
+        filters:
+          branches:
+            only: master
+      - deploy:
+        filters:
+          branches:
+            only: master
+        requires:
+          - build
+          # - test
+          # - lint
