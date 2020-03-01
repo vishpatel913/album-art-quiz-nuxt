@@ -2,24 +2,30 @@ version: 2.1
 orbs:
   heroku: circleci/heroku@1.0.1
 
-commands:
-  install_dependencies:
-    description: 'Install dependencies'
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            # Find a cache corresponding to this specific package-lock.json
-            - v1-dependencies-{{ checksum "package-lock.json" }}
-            # Fallback cache to be used
-            - v1-dependencies-
-      - run:
-          name: Install Dependencies
-          command: yarn
-      - save_cache:
-          key: v1-dependencies-{{ checksum "package-lock.json" }}
-          paths:
-            - ./node_modules
+workflows:
+  heroku_deploy:
+    jobs:
+      # - test:
+      #   filters:
+      #     branches:
+      #       only: master
+      # - lint:
+      #   filters:
+      #     branches:
+      #       only: master
+      - build:
+          filters:
+            branches:
+              only: master
+      - deploy:
+          requires:
+            - build
+            # - test
+            # - lint
+          filters:
+            branches:
+              only: master
+
 jobs:
   test:
     docker:
@@ -55,26 +61,21 @@ jobs:
           heroku config:set NODE_ENV=production
       - heroku/deploy-via-git
 
-workflows:
-  heroku_deploy:
-    jobs:
-      # - test:
-      #   filters:
-      #     branches:
-      #       only: master
-      # - lint:
-      #   filters:
-      #     branches:
-      #       only: master
-      - build:
-          filters:
-            branches:
-              only: master
-      - deploy:
-          requires:
-            - build
-            # - test
-            # - lint
-          filters:
-            branches:
-              only: master
+commands:
+  install_dependencies:
+    description: 'Install dependencies'
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            # Find a cache corresponding to this specific package-lock.json
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+            # Fallback cache to be used
+            - v1-dependencies-
+      - run:
+          name: Install Dependencies
+          command: yarn
+      - save_cache:
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
