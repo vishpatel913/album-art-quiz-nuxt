@@ -2,7 +2,7 @@ module.exports = {
   // The prefix to use on all css classes from ant.
   'ant-prefix': 'ant',
 
-  // -------- Colors -----------
+  // Colors
   'gold-6': '#ffeb3b',
   'green-6': '#09ecaf',
   'blue-6': '#3d7fff',
@@ -21,7 +21,7 @@ module.exports = {
   white: '#fff',
   black: '#000',
 
-  // links
+  // Links
   'link-color': '#3b8070',
   'link-decoration': 'none',
   'link-hover-decoration': 'none',
@@ -50,21 +50,21 @@ module.exports = {
   'border-radius-base': '4px',
   'border-radius-sm': '2px',
 
-  // vertical paddings
+  // Vertical paddings
   'padding-lg': '24px', // containers
   'padding-md': '16px', // small containers and buttons
   'padding-sm': '8px', // Form controls and items
   'padding-xs': '4px', // small items
 
-  // vertical padding for all form controls
+  // Vertical padding for all form controls
   'control-padding-horizontal': '8px',
   'control-padding-horizontal-sm': '4px'
 
   // // The background colors for active and hover states for things like
-  // list items or table cells.
+  // // list items or table cells.
   // 'item-active-bg': '@primary-1',
   // 'item-hover-bg': '@primary-1',
   //
-  // // ICONFONT
+  // // Iconfont
   // 'iconfont-css-prefix': 'anticon',
 }
