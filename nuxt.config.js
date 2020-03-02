@@ -35,6 +35,11 @@ export default {
     credentials: false,
     proxyHeaders: false
   },
+  pwa: {
+    manifest: {
+      name: 'Pubs Nearby'
+    }
+  },
   serverMiddleware: [],
   build: {
     extend (config, ctx) {}
