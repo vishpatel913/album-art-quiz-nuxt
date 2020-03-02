@@ -1,3 +1,5 @@
+import themeConfig from './theme.config'
+
 export default {
   mode: 'universal',
   srcDir: 'src/',
@@ -14,30 +16,20 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
-  loading: { color: '#1DA57A' },
-  css: [
-    '@/assets/less/global.less',
-    '@/assets/less/_variables.less'
-    // {
-    //   loaderOptions: {
-    //     less: {
-    //       modifyVars: {
-    //         'primary-color': '#1DA57A',
-    //         'link-color': '#1DA57A',
-    //         'border-radius-base': '2px'
-    //       },
-    //       javascriptEnabled: true
-    //     }
-    //   }
-    // }
-  ],
+  loading: { color: '#1da57a' },
   plugins: ['@/plugins/googleMaps', '@/plugins/ant-design-ui'],
   buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/stylelint-module'],
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/dotenv',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    'nuxt-webfontloader'
+  ],
+  css: [
+    'ant-design-vue/dist/antd.less',
+    '@/assets/less/_variables.less',
+    '@/assets/less/global.less'
   ],
   styleResources: {
     less: ['@/assets/less/_variables.less']
@@ -55,16 +47,19 @@ export default {
       name: 'Pubs Nearby'
     }
   },
+  webfontloader: {
+    google: {
+      families: ['Quicksand:300,400,500,600,700']
+    }
+  },
   serverMiddleware: [],
   build: {
     extend (config, ctx) {},
     loaders: {
       less: {
-        // modifyVars: {
-        //   'primary-color': '#1DA57A',
-        //   'link-color': '#1DA57A',
-        //   'heading-color': '#1DA57A'
-        // },
+        modifyVars: {
+          ...themeConfig
+        },
         javascriptEnabled: true
       }
     }

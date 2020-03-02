@@ -1,10 +1,14 @@
 <template>
   <div class="container">
     <h1>Pub Finder</h1>
-    <h2>lat: {{ getLocation.lat }}</h2>
-    <h2>long: {{ getLocation.lng }}</h2>
-    <h3>Nearest Pubs: {{ getResults.map(item => item.name) }}</h3>
-    <a href="https://vishpatel.com">Link to my site</a>
+    <div>
+      <p><strong>lat</strong>: {{ getLocation.lat }}</p>
+      <p><strong>long</strong>: {{ getLocation.lng }}</p>
+    </div>
+    <h2>Nearest Pubs</h2>
+    <p>{{ getResults.map(item => item.name) }}</p>
+    <p><a href="https://vishpatel.com">Link to my site</a></p>
+    <a-button @click="testClick">Button?</a-button>
   </div>
 </template>
 
@@ -19,6 +23,11 @@ export default {
   computed: {
     ...mapGetters(['getLocation', 'getResults']),
     nearestPubs: () => {}
+  },
+  methods: {
+    testClick: () => {
+      alert('It is a button!')
+    }
   }
 }
 </script>

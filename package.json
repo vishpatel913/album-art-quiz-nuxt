@@ -20,7 +20,8 @@
     "less": "^3.11.1",
     "less-loader": "^5.0.0",
     "moment": "^2.24.0",
-    "nuxt": "^2.11.0"
+    "nuxt": "^2.11.0",
+    "nuxt-webfontloader": "^1.1.0"
   },
   "devDependencies": {
     "@babel/runtime-corejs2": "^7.8.4",
