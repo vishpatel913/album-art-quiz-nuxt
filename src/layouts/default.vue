@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<style lang="scss">
+<style lang="less">
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -32,18 +32,18 @@ h4 {
 
 h1 {
   font-size: 40px;
-  color: $color-primary;
+  color: @color-primary;
 }
 
 h2 {
   font-size: 30px;
-  color: $color-secondary;
+  color: @color-secondary;
 }
 
 p {
   font-weight: 300;
   font-size: 16px;
-  color: $color-primary;
+  color: @color-primary;
   padding: 15px;
   margin-bottom: 0.25rem;
 }

@@ -15,8 +15,22 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   loading: { color: '#1DB954' },
-  css: ['@/assets/scss/_variables.scss'],
-  plugins: ['~/plugins/googleMaps'],
+  css: [
+    '@/assets/less/_variables.less'
+    // {
+    //   loaderOptions: {
+    //     less: {
+    //       modifyVars: {
+    //         'primary-color': '#1DA57A',
+    //         'link-color': '#1DA57A',
+    //         'border-radius-base': '2px'
+    //       },
+    //       javascriptEnabled: true
+    //     }
+    //   }
+    // }
+  ],
+  plugins: ['@/plugins/googleMaps', '@/plugins/ant-design-ui'],
   buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/stylelint-module'],
   modules: [
     '@nuxtjs/axios',
@@ -25,7 +39,7 @@ export default {
     '@nuxtjs/style-resources'
   ],
   styleResources: {
-    scss: ['@/assets/scss/_variables.scss']
+    less: ['@/assets/less/_variables.less']
   },
   dotenv: {
     path: './'
