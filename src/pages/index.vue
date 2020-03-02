@@ -4,6 +4,7 @@
     <h2>lat: {{ getLocation.lat }}</h2>
     <h2>long: {{ getLocation.lng }}</h2>
     <h3>Nearest Pubs: {{ getResults.map(item => item.name) }}</h3>
+    <a href="https://vishpatel.com">Link to my site</a>
   </div>
 </template>
 

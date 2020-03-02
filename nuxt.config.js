@@ -14,8 +14,9 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
-  loading: { color: '#1DB954' },
+  loading: { color: '#1DA57A' },
   css: [
+    '@/assets/less/global.less',
     '@/assets/less/_variables.less'
     // {
     //   loaderOptions: {
@@ -56,7 +57,17 @@ export default {
   },
   serverMiddleware: [],
   build: {
-    extend (config, ctx) {}
+    extend (config, ctx) {},
+    loaders: {
+      less: {
+        // modifyVars: {
+        //   'primary-color': '#1DA57A',
+        //   'link-color': '#1DA57A',
+        //   'heading-color': '#1DA57A'
+        // },
+        javascriptEnabled: true
+      }
+    }
   },
   babel: {
     presets ({ isServer }) {
