@@ -29,7 +29,7 @@ export default {
   css: [
     'ant-design-vue/dist/antd.less',
     '@/assets/less/_variables.less',
-    '@/assets/less/global.less'
+    '@/assets/less/_typography.less'
   ],
   styleResources: {
     less: ['@/assets/less/_variables.less']
@@ -44,7 +44,10 @@ export default {
   },
   pwa: {
     manifest: {
-      name: 'Pubs Nearby'
+      name: 'Pubs Nearby',
+      short_name: 'Pubs Nearby',
+      lang: 'en',
+      display: 'standalone'
     }
   },
   webfontloader: {
