@@ -8,7 +8,13 @@
     <h2>Nearest Pubs</h2>
     <p>{{ getResults.map(item => item.name) }}</p>
     <p><a href="https://vishpatel.com">Link to my site</a></p>
-    <a-button @click="testClick">Button?</a-button>
+    <a-button
+      type="primary"
+      shape="circle"
+      size="large"
+      icon="environment"
+      @click="refresh"
+    ></a-button>
   </div>
 </template>
 
@@ -25,8 +31,8 @@ export default {
     nearestPubs: () => {}
   },
   methods: {
-    testClick: () => {
-      alert('It is a button!')
+    refresh: () => {
+      window.location.reload(true)
     }
   }
 }
