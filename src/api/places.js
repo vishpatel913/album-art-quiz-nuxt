@@ -15,9 +15,6 @@ export default $axios => ({
       fields: 'name,geometry,opening_hours,photos,rating,vicinity',
       key: process.env.GOOGLE_API_KEY
     }
-    return $axios.$get(
-      'https://maps.googleapis.com/maps/api/place/details/json',
-      { params }
-    )
+    return $axios.$get('/place/details/json', { params })
   }
 })

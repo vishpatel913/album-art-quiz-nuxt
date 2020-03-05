@@ -2,6 +2,7 @@
   <div class="container">
     <h1>Pub Finder</h1>
     <p><strong>Location</strong>: {{ getLocation }}</p>
+    <p><strong>Coords</strong>: {{ JSON.stringify(getCoordinates) }}</p>
     <h2>Nearest Pubs</h2>
     <p>{{ getResults.map(item => item.name) }}</p>
     <p><a href="https://vishpatel.com">Link to my site</a></p>
@@ -25,7 +26,7 @@ export default {
     await ctx.store.dispatch('getNearbyPubs')
   },
   computed: {
-    ...mapGetters(['getLocation', 'getResults']),
+    ...mapGetters(['getCoordinates', 'getLocation', 'getResults']),
     nearestPubs: () => {}
   },
   methods: {
